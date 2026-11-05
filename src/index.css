@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* 60-30-10 Color System */
+    --bg-canvas: #FAFAF8;       /* 60% Neutral Dominant Canvas */
+    --bg-soft: #F1F0EC;         /* 30% Structural Surface */
+    --bg-soft-hover: #E5E3DC;   /* 30% Interactive Surface Hover */
+    --text-primary: #0F0F10;    /* Contrast Ratio > 17:1 on #FAFAF8 (WCAG AAA) */
+    --text-muted: #525257;      /* Contrast Ratio > 7.2:1 on #FAFAF8 (WCAG AA/AAA) */
+    --accent-purple: #5B3DF5;   /* 10% Primary CTA Accent (Contrast > 5.8:1 with #FFFFFF) */
+    --accent-hover: #492CE0;
+    --border-hairline: rgba(15, 15, 16, 0.08);
+  }
+
+  html {
+    font-family: 'Satoshi', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    margin: 0;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Utilitários de Design System */
+.text-gradient-editorial {
+  background: linear-gradient(135deg, #0F0F10 0%, #2A2550 55%, #5B3DF5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.font-hero-condensed {
+  font-family: 'Antonio', 'Bebas Neue', 'Oswald', sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.86;
+}
+
+.shadow-layered {
+  box-shadow:
+    0 1px 2px rgba(15, 15, 16, 0.04),
+    0 8px 24px -4px rgba(15, 15, 16, 0.06);
+}
+
+.shadow-modal {
+  box-shadow:
+    0 4px 12px rgba(15, 15, 16, 0.08),
+    0 24px 48px -12px rgba(15, 15, 16, 0.18);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
