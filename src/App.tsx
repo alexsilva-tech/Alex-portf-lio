@@ -278,7 +278,7 @@ export default function App() {
         onClick={() => handleOpenProject(project)}
       >
         {/* Cover Image (proporção ampla estilo mydesux.framer.website) */}
-        <div className="relative aspect-[3/2] w-full rounded-2xl overflow-hidden bg-[#F1F0EC] mb-4 border border-[#0F0F10]/[0.06] transition-all duration-300 group-hover:shadow-layered">
+        <div className="relative aspect-[3/2] w-full rounded-[1.35rem] overflow-hidden bg-[#F1F0EC] mb-4 border border-[#0F0F10]/[0.06] transition-all duration-300 group-hover:shadow-layered group-hover:-translate-y-1">
           {!isLoaded && !hasFailed && (
             <div className="absolute inset-0 bg-[#F1F0EC] animate-pulse flex items-center justify-center">
               <Loader2 className="w-6 h-6 text-[#525257] animate-spin" />
@@ -391,10 +391,11 @@ export default function App() {
             <button
               type="button"
               onClick={() => navigateToProjectsPage('Todos')}
-              className="hidden md:inline-flex min-h-[40px] items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold text-[#0F0F10] bg-[#F1F0EC] hover:bg-[#0F0F10] hover:text-white active:scale-[0.98] rounded-full transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5B3DF5]"
+              className="hidden md:inline-flex min-h-[40px] items-center justify-center gap-2 px-1 text-sm font-semibold text-[#0F0F10] border-b border-transparent hover:border-[#5B3DF5] hover:text-[#5B3DF5] active:scale-[0.98] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5B3DF5]"
             >
-              <span>Arquivo ({projects.length})</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>Projetos</span>
+              <span className="font-mono text-xs text-[#71717A]">{String(projects.length).padStart(2, '0')}</span>
+              <ArrowUpRight className="w-4 h-4" />
             </button>
 
             <button
@@ -545,26 +546,28 @@ export default function App() {
       ) : (
         <main className="flex-1">
           {/* 2. HERO — Mantém a primeira Hero criada inicialmente com o posicionamento de Portfólio (Opção C) */}
-          <section className="relative pt-10 sm:pt-14 md:pt-18 pb-0 lg:pb-0 border-b border-[#0F0F10]/[0.08] overflow-hidden">
+          <section className="hero-grid relative pt-10 sm:pt-14 md:pt-18 pb-0 lg:pb-0 border-b border-[#0F0F10]/[0.08] overflow-hidden">
             <div className="max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-10 items-end">
                 {/* Coluna Esquerda: Kicker, Título Principal, Bio e Ações */}
                 <motion.div
                   initial={{ opacity: 0, y: 32 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
-                  className="lg:col-span-7 flex flex-col justify-center pb-12 sm:pb-16 lg:pb-24 pt-4 sm:pt-6"
+                  className="lg:col-span-6 flex flex-col justify-center pb-10 sm:pb-14 lg:pb-20 pt-4 sm:pt-6"
                 >
                   {/* Kicker voltado para Portfólio */}
-                  <p className="text-xs sm:text-sm font-semibold text-[#525257] tracking-wider uppercase mb-5 sm:mb-6">
-                    Portfólio · Designer Gráfico &amp; Visual Designer
-                  </p>
+                  <div className="flex items-center gap-3 mb-5 sm:mb-6">
+                    <span className="status-dot" aria-hidden="true" />
+                    <p className="text-xs sm:text-sm font-semibold text-[#525257] tracking-wider uppercase">
+                      Portfólio · Designer Gráfico &amp; Visual Designer
+                    </p>
+                  </div>
 
                   {/* Headline de Alto Impacto — Opção C */}
-                  <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[4.6rem] font-bold text-[#0F0F10] tracking-[-0.035em] leading-[1.08] mb-6 max-w-xl">
-                    Design gráfico<br />
-                    estratégico para marcas,<br />
-                    campanhas e produtos.
+                  <h1 className="text-[2.35rem] sm:text-[3.2rem] md:text-[3.8rem] lg:text-[4.05rem] xl:text-[4.35rem] font-bold text-[#0F0F10] tracking-[-0.045em] leading-[1.03] mb-6 max-w-[34rem]">
+                    Marcas com presença.<br />
+                    Design com propósito.
                   </h1>
 
                   {/* Bio Profissional focada em Perfil e Contratação */}
@@ -597,15 +600,22 @@ export default function App() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.1, ease: EASE_OUT_EXPO }}
-                  className="lg:col-span-5 flex items-end justify-center lg:justify-end -mb-1 select-none"
+                  className="lg:col-span-6 flex items-end justify-center lg:justify-end -mb-1 select-none"
                 >
-                  <div className="relative w-full max-w-[380px] sm:max-w-[440px] lg:max-w-[500px] flex items-end justify-center lg:justify-end">
+                  <div className="portrait-frame relative w-full max-w-[360px] sm:max-w-[500px] lg:max-w-[560px] flex items-end justify-center lg:justify-end">
+                    <div className="portrait-index hidden sm:flex" aria-hidden="true">
+                      <span>01</span><span>26</span>
+                    </div>
                     <img
                       src={HERO_PORTRAIT_IMAGE}
                       alt="Alex — Designer Gráfico"
                       referrerPolicy="no-referrer"
-                      className="w-full h-auto max-h-[460px] sm:max-h-[560px] lg:max-h-[640px] object-contain object-bottom select-none"
+                      className="w-full h-auto max-h-[440px] sm:max-h-[600px] lg:max-h-[680px] object-contain object-bottom select-none"
                     />
+                    <div className="availability-card hidden sm:block">
+                      <span className="availability-label">Disponível para</span>
+                      <span>projetos selecionados</span>
+                    </div>
                   </div>
                 </motion.div>
               </div>

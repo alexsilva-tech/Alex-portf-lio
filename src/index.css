@@ -28,6 +28,11 @@
     margin: 0;
   }
 
+  ::selection {
+    background: var(--accent-purple);
+    color: white;
+  }
+
   h1, h2, h3, h4 {
     text-wrap: balance;
     letter-spacing: -0.025em;
@@ -59,6 +64,87 @@
   box-shadow:
     0 4px 12px rgba(15, 15, 16, 0.08),
     0 24px 48px -12px rgba(15, 15, 16, 0.18);
+}
+
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(to right, rgba(15, 15, 16, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 15, 16, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to right, transparent 0%, black 32%, black 92%, transparent 100%);
+}
+
+.hero-grid > div { position: relative; }
+
+.status-dot {
+  width: 0.56rem;
+  height: 0.56rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #5B3DF5;
+  box-shadow: 0 0 0 5px rgba(91, 61, 245, 0.12);
+}
+
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  width: 88%;
+  aspect-ratio: 1 / 1.12;
+  right: 2%;
+  bottom: 0;
+  border-radius: 15rem 15rem 0 0;
+  background: #e9e7e0;
+  border: 1px solid rgba(15, 15, 16, 0.08);
+}
+
+.portrait-frame img { position: relative; z-index: 1; }
+
+.portrait-index {
+  position: absolute;
+  z-index: 2;
+  top: 13%;
+  right: 0;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 0.62rem;
+  color: #FAFAF8;
+  background: #0F0F10;
+  font: 700 0.65rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+}
+
+.availability-card {
+  position: absolute;
+  z-index: 2;
+  left: -1.25rem;
+  bottom: 2rem;
+  max-width: 10.5rem;
+  padding: 0.85rem 1rem;
+  color: white;
+  background: #5B3DF5;
+  box-shadow: 0 12px 32px rgba(91, 61, 245, 0.24);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.availability-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: rgba(255,255,255,.72);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1023px) {
+  .hero-grid::before { mask-image: linear-gradient(to bottom, transparent, black 20%, black 75%, transparent); }
 }
 
 .no-scrollbar::-webkit-scrollbar {
